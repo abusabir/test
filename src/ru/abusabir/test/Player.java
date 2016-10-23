@@ -55,14 +55,20 @@ public class Player {
     }
 
     public void takeCards(int numberOfCards) {
+
+        if(this.deskList.size() == 0) return;
+
         for(int i = 0; i < numberOfCards; i++) {
             this.handCards.add(this.deskList.get(this.deskList.size() - 1));
             this.deskList.remove(this.deskList.size() - 1);
             System.out.println("Player " + this.name + " take " + this.handCards.get(this.handCards.size() - 1));
         }
+
+        System.out.println(this.deskList.size() + " in the desk");
     }
 
     public void attack(Player attacked) throws IOException {
+        if(this.getHandCards().size() == 0) throw new GameOverException("Game over");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Your turn, " + this.getName());
         this.printCards();
@@ -94,9 +100,10 @@ public class Player {
             }
 
             this.decreaseHealth(cardOfAttack.getAttack() - cardOfDefence.getDefence());
+            this.takeCards(1);
         }
 
-        this.takeCards(1);
+
         this.attack(attacking);
 
 
@@ -107,7 +114,7 @@ public class Player {
         if(value > 0) this.setHealth(this.getHealth() - value);
         System.out.println(this.getName() + "'s health decrease by " + value + " and now it is " + this.getHealth());
         if(this.getHealth() <= 0) {
-            System.out.println(this.getName() + " lost");
+            throw new GameOverException("Game over");
         }
 
     }

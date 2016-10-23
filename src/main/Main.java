@@ -17,7 +17,18 @@ public class Main {
         Player player2 = new Player("Piter", deck);
         Player[] players = {player1, player2};
         int randomPlayerIndex = new Random().nextInt(2);
-        players[randomPlayerIndex].attack(players[1 - randomPlayerIndex]);
+        try {
+            players[randomPlayerIndex].attack(players[1 - randomPlayerIndex]);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            if(player1.getHealth() > player2.getHealth()) {
+                System.out.println(player1.getName() + " win");
+            } else {
+                System.out.println(player2.getName() + " win");
+            }
+
+        }
+
 
     }
 
