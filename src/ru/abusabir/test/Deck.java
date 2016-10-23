@@ -1,28 +1,31 @@
 package ru.abusabir.test;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Oleg
  * 23.10.2016
  */
 public class Deck {
-    private LinkedList<Card> deckList;
+    private List<Card> deckList;
     private final int QUANTITY = 24;
 
     public Deck() {
-        for(int i = 0; i < QUANTITY; i++) {
-            deckList.add(new Card());
+        this.deckList = new ArrayList<Card>();
+        for (int i = 0; i < QUANTITY; i++) {
+            this.deckList.add(new Card());
         }
     }
 
+    public List<Card> getDeckList() {
+        return deckList;
+    }
+
     public void printDeck() {
-        for(int i = 0; i < QUANTITY; i++) {
-            Card card = deckList.get(i);
-            System.out.println(card.getName());
-            System.out.println(card.getElement());
-            System.out.println(card.getDefence());
-            System.out.println(card.getAttack());
+        for (int i = 0; i < QUANTITY; i++) {
+            Card card = this.deckList.get(i);
+            System.out.println(card);
         }
     }
 }

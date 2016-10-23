@@ -24,8 +24,8 @@ public class Card {
         Random random = new Random();
         this.name = CardName.values()[random.nextInt(CardName.values().length)];
         this.element = Element.values()[random.nextInt(Element.values().length)];
-        this.defence = random.nextInt(MAX_POINTS);
-        this.attack = random.nextInt(MAX_POINTS);
+        this.defence = random.nextInt(MAX_POINTS + 1);
+        this.attack = random.nextInt(MAX_POINTS + 1);
     }
 
     public CardName getName() {
@@ -42,5 +42,15 @@ public class Card {
 
     public int getAttack() {
         return attack;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "name=" + name +
+                ", element=" + element +
+                ", defence=" + defence +
+                ", attack=" + attack +
+                '}';
     }
 }
