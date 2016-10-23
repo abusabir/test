@@ -1,0 +1,11 @@
+package ru.abusabir.test;
+
+/**
+ * Oleg
+ * 23.10.2016
+ */
+public enum CardName {
+    CARD1, CARD2, CARD3, CARD4, CARD5, CARD6, CARD7, CARD8, CARD9, CARD10,
+    CARD11, CARD12, CARD13, CARD14, CARD15, CARD16, CARD17, CARD18, CARD19, CARD20,
+    CARD21, CARD22, CARD23, CARD24
+}
